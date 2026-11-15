@@ -1,0 +1,23 @@
+# Analysis parameters. Paths to participant data point to secure storage, never into this repo.
+project: autoimmune-multiomics-ai
+random_seed: 2026
+
+paths:
+  raw: data/raw
+  processed: data/processed
+  external: data/external
+  results: results
+
+mr:
+  exposures: [omega3_total, dha, omega6_total, omega6_omega3_ratio, linoleic_acid]
+  outcome: rheumatoid_arthritis
+  instrument_p_threshold: 5.0e-8
+  clump_r2: 0.001
+  clump_kb: 10000
+  methods: [ivw, mr_egger, weighted_median]
+
+ml:
+  cv_outer_folds: 5
+  cv_inner_folds: 5
+  split_by: participant_id   # repeated visits never cross folds
+  metrics: [roc_auc, average_precision, brier]

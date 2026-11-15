@@ -1,0 +1,4 @@
+participant_id,visit,months_from_baseline,group,acpa_status,sex,age,bmi,progressed,months_to_onset
+SYN001,0,0,at_risk,positive,F,52,27.1,0,
+SYN001,1,6,at_risk,positive,F,52,27.4,0,
+SYN002,0,0,at_risk,negative,M,47,24.9,0,

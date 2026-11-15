@@ -1,0 +1,35 @@
+# ---- Participant data: never commit ----
+data/raw/*
+data/processed/*
+data/external/*
+!data/**/.gitkeep
+*.h5ad
+*.h5
+*.rds
+*.vcf*
+*.bam
+*.fastq*
+*.fq*
+*.mzML
+*.raw
+
+# ---- Private grant drafts ----
+docs/grant/
+
+# ---- Generated models ----
+results/models/*
+!results/models/.gitkeep
+
+# ---- Python / R / tooling ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.Rhistory
+.RData
+.Rproj.user/
+.snakemake/
+.env
+.DS_Store

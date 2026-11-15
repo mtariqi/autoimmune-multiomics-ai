@@ -1,0 +1,12 @@
+# Snakemake pipeline entry point. Rules are added per analysis in workflow/rules/.
+configfile: "config/config.yaml"
+
+rule all:
+    input:
+        "results/tables/environment_check.txt"
+
+rule environment_check:
+    output:
+        "results/tables/environment_check.txt"
+    shell:
+        "python -c 'import autoimmune_mo, sys; print(autoimmune_mo.__version__, sys.version)' > {output}"

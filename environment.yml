@@ -1,0 +1,28 @@
+name: autoimmune-mo
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.11
+  - pip
+  - numpy
+  - pandas
+  - scipy
+  - statsmodels
+  - scikit-learn
+  - lifelines
+  - xgboost
+  - shap
+  - scanpy
+  - matplotlib
+  - seaborn
+  - pyyaml
+  - snakemake-minimal
+  - pytest
+  - ruff
+  - black
+  - jupyterlab
+  # R side, for Mendelian randomization (TwoSampleMR is installed from GitHub; see docs/methods)
+  - r-base=4.3
+  - r-devtools
+  - r-data.table
