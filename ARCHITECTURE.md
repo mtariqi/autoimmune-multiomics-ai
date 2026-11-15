@@ -44,6 +44,7 @@ Each analysis has the same four pieces, with matching names:
 | --- | --- | --- | --- | --- |
 | Mendelian randomization | `workflow/rules/mr.smk` | `autoimmune_mo.mr` | `results/mr/` | Public GWAS summary statistics |
 | Single-cell re-analysis | `workflow/rules/scrnaseq.smk` | `autoimmune_mo.scrnaseq` | `results/scrnaseq/` | Public PBMC scRNA-seq |
+| Synthetic demo | `workflow/rules/demo.smk` | `autoimmune_mo.ml` | `results/demo/` | Generated, no real data |
 | Fatty-acid classifier | `workflow/rules/classifier.smk` | `autoimmune_mo.ml`, `autoimmune_mo.metabolomics` | `results/classifier/` | Secure (participant-level) |
 | Multi-omics integration | added later | `autoimmune_mo.integration` | `results/integration/` | Secure |
 
@@ -67,9 +68,16 @@ Each analysis has the same four pieces, with matching names:
 
 ## Running
 
+Snakemake reads its default settings from `workflow/profiles/default/config.yaml`
+(4 cores, per-rule conda environments, rerun when code, parameters or software change).
+
 ```bash
-snakemake -n mr_all                 # dry run: show what would run
-snakemake --cores 4 --use-conda mr_all
-export AMO_SECURE_DATA=/secure/path   # only on the machine with participant data
-snakemake --cores 4 classifier_all
+snakemake -n mr_all                     # dry run: show what would run
+snakemake mr_all                        # run with the default profile
+snakemake --cores 8 mr_all              # override a profile setting
+export AMO_SECURE_DATA=/secure/path     # only on the machine with participant data
+snakemake classifier_all
 ```
+
+The `demo_all` target runs the pipeline on synthetic data and needs no data access. CI runs it on
+every push and checks that a second run produces identical output.

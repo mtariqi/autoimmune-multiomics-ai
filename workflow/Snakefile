@@ -1,7 +1,16 @@
-# Pipeline entry point. Run one analysis with: snakemake --cores 4 --use-conda <analysis>_all
+# Pipeline entry point.
+#   snakemake -n <target>        dry run
+#   snakemake <target>           run (settings come from workflow/profiles/default)
+# Targets: demo_all, mr_all, scrnaseq_all, classifier_all
+from snakemake.utils import min_version
+
+min_version("8.20")
+
+
 configfile: "config/config.yaml"
 
 
+include: "rules/demo.smk"
 include: "rules/mr.smk"
 include: "rules/scrnaseq.smk"
 include: "rules/classifier.smk"
@@ -10,10 +19,16 @@ include: "rules/classifier.smk"
 rule all:
     input:
         "results/tables/environment_check.txt",
+        rules.demo_all.input,
 
 
 rule environment_check:
     output:
         "results/tables/environment_check.txt",
+    log:
+        "logs/environment_check.log",
     shell:
-        "python -c 'import autoimmune_mo, sys; print(autoimmune_mo.__version__, sys.version)' > {output}"
+        "python -c 'import autoimmune_mo, sys, snakemake; "
+        "print(\"autoimmune_mo\", autoimmune_mo.__version__); "
+        "print(\"snakemake\", snakemake.__version__); "
+        "print(\"python\", sys.version.split()[0])' > {output} 2> {log}"

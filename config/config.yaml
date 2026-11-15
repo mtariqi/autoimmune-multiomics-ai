@@ -9,6 +9,12 @@ paths:
   results: results
   secure: ${AMO_SECURE_DATA}
 
+# ---- Synthetic demo (runs anywhere; used by CI) ----
+demo:
+  n_participants: 200
+  visits: 3
+  n_features: 10
+
 # ---- Aim 2 preliminary: Mendelian randomization ----
 mr:
   # Each exposure needs a GWAS summary-statistics file at data/external/gwas/<name>.tsv.gz.

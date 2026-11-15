@@ -1,0 +1,6 @@
+fold	n_train_rows	n_test_rows	n_test_participants	test_progressor_share	participants_leaked
+0	480	120	40	0.225	0
+1	480	120	40	0.225	0
+2	480	120	40	0.225	0
+3	480	120	40	0.2	0
+4	480	120	40	0.2	0

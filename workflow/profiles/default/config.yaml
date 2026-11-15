@@ -1,0 +1,9 @@
+# Default Snakemake settings, applied automatically to every run in this repo.
+# Override any of them on the command line, e.g. --cores 8.
+cores: 4
+software-deployment-method: conda   # rules with a conda: directive get their own pinned env
+printshellcmds: true
+show-failed-logs: true
+rerun-incomplete: true
+rerun-triggers: [mtime, params, input, software-env, code]
+latency-wait: 30

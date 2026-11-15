@@ -17,7 +17,7 @@ dependencies:
   - matplotlib
   - seaborn
   - pyyaml
-  - snakemake-minimal
+  - snakemake-minimal>=8.20,<9
   - pytest
   - ruff
   - black

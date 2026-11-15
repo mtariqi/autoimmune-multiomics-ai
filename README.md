@@ -36,8 +36,41 @@ conda env create -f environment.yml
 conda activate autoimmune-mo
 pip install -e .
 pytest
-snakemake -n          # dry run of the pipeline
+snakemake all            # runs the synthetic demo end to end
 ```
+
+## Reproducing results
+
+All results are produced by the Snakemake pipeline in `workflow/`. Settings (cores, conda
+environments, rerun triggers) come from `workflow/profiles/default/config.yaml`.
+
+| Target | What it runs | Data needed |
+| --- | --- | --- |
+| `snakemake all` | Environment check + synthetic demo | None |
+| `snakemake mr_all` | Mendelian randomization | Public GWAS in `data/external/gwas/` |
+| `snakemake scrnaseq_all` | Single-cell re-analysis | Public `.h5ad` files in `data/external/scrnaseq/` |
+| `snakemake classifier_all` | Fatty-acid classifier | `AMO_SECURE_DATA` set (secure machine only) |
+
+Useful commands:
+
+```bash
+snakemake -n mr_all                                   # dry run: list jobs without running
+snakemake --dag mr_all | dot -Tsvg > results/figures/dag_mr.svg   # pipeline diagram
+snakemake --report results/report.html                # HTML report with provenance
+snakemake --summary                                   # status and code version of every output
+```
+
+**Software versions.** `environment.yml` pins major versions. After creating the environment,
+record the exact versions and commit the file:
+
+```bash
+conda env export --no-builds -n autoimmune-mo > environment.lock.yml
+```
+
+To rebuild the exact environment later: `conda env create -f environment.lock.yml`.
+
+**Determinism.** Every stochastic step reads `random_seed` from `config/config.yaml`. CI runs the
+demo twice from scratch and fails if the outputs differ.
 
 ## Data policy
 
