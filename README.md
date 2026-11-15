@@ -1,10 +1,61 @@
-# autoimmune-multiomics-ai
+<p align="center">
+  <img src="docs/assets/banner.svg" alt="Autoimmune Multi-Omics AI: six omics signals diverging in the pre-clinical window before autoimmune disease onset" width="100%">
+</p>
 
-Reproducible multi-omics and explainable machine-learning platform for studying the
-pre-clinical phase of autoimmune disease, starting with rheumatoid arthritis (RA).
+<p align="center">
+  <a href="https://github.com/mtariqi/autoimmune-multiomics-ai/actions/workflows/ci.yml"><img src="https://github.com/mtariqi/autoimmune-multiomics-ai/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://www.repostatus.org/#wip"><img src="https://www.repostatus.org/badges/latest/wip.svg" alt="Project status: WIP"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
+  <a href="CITATION.cff"><img src="https://img.shields.io/badge/cite-CITATION.cff-informational.svg" alt="Cite this repository"></a>
+  <a href="https://github.com/mtariqi/autoimmune-multiomics-ai/commits/main"><img src="https://img.shields.io/github/last-commit/mtariqi/autoimmune-multiomics-ai.svg" alt="Last commit"></a>
+  <br>
+  <img src="https://img.shields.io/badge/python-3.11-3776AB.svg?logo=python&logoColor=white" alt="Python 3.11">
+  <img src="https://img.shields.io/badge/R-4.3-276DC3.svg?logo=r&logoColor=white" alt="R 4.3">
+  <a href="https://snakemake.github.io"><img src="https://img.shields.io/badge/snakemake-%E2%89%A58.20-039475.svg" alt="Snakemake 8.20 or later"></a>
+  <a href="https://scanpy.readthedocs.io"><img src="https://img.shields.io/badge/single--cell-Scanpy-1F6FB2.svg" alt="Scanpy"></a>
+  <a href="https://github.com/astral-sh/ruff"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json" alt="Code style: Ruff"></a>
+</p>
+
+A systems biology framework that integrates six layers of molecular data to identify biomarkers
+and predict autoimmune disease risk using explainable artificial intelligence. The first
+application is the pre-clinical phase of rheumatoid arthritis (RA).
 
 **Research question:** Do serum fatty-acid disturbances precede and contribute to RA, and can
 integrated multi-omics predict who among at-risk individuals will progress?
+
+## Objectives
+
+1. **Early disease prediction:** a validated risk score for people at elevated risk, before symptoms.
+2. **Disease subtype discovery:** reproducible molecular endotypes with different progression rates.
+3. **Biomarker identification:** features that change before onset, tested for causality.
+4. **Precision medicine development:** evidence to select who should enter prevention trials.
+
+## Data layers
+
+| Layer | What is measured | Phase |
+| --- | --- | --- |
+| Metabolomics | Serum fatty acids and oxylipins (LC-MS/MS) | 1 (existing data), 2 |
+| Genomics | Genotypes, polygenic scores, Mendelian randomization instruments | 1 (public GWAS), 2 |
+| Transcriptomics | Whole-blood and PBMC gene expression | 2 |
+| Single-cell RNA-seq | PBMC immune cell states | 1 (public data), 2 |
+| Proteomics | Inflammatory proteins (Olink) | 2 |
+| Microbiome | Shotgun stool metagenomics | 2 |
+
+**Phase 1** is preliminary work on public and existing data, in progress now.
+**Phase 2** is the prospective at-risk cohort described in the grant proposal.
+
+## Technologies
+
+| Tool | Used for |
+| --- | --- |
+| Python 3.11 | Analysis package (`src/autoimmune_mo`), machine learning |
+| R 4.3 | Mendelian randomization (TwoSampleMR) |
+| Snakemake | Reproducible pipeline, per-rule conda environments |
+| Scanpy | Single-cell RNA-seq analysis |
+| scikit-learn, XGBoost | Leakage-safe cross-validation, prediction models |
+| SHAP | Explaining model predictions |
+| lifelines | Survival models for time to onset |
+| conda, GitHub Actions | Pinned environments, automated tests and pipeline runs |
 
 ## Status
 
