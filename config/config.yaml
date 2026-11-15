@@ -1,4 +1,4 @@
-# Analysis parameters. Paths to participant data point to secure storage, never into this repo.
+# Analysis parameters. Participant data are referenced only via $AMO_SECURE_DATA.
 project: autoimmune-multiomics-ai
 random_seed: 2026
 
@@ -7,14 +7,34 @@ paths:
   processed: data/processed
   external: data/external
   results: results
+  secure: ${AMO_SECURE_DATA}
 
+# ---- Aim 2 preliminary: Mendelian randomization ----
 mr:
+  # Each exposure needs a GWAS summary-statistics file at data/external/gwas/<name>.tsv.gz.
+  # Record its source in data/metadata/sources.csv when downloaded.
   exposures: [omega3_total, dha, omega6_total, omega6_omega3_ratio, linoleic_acid]
   outcome: rheumatoid_arthritis
   instrument_p_threshold: 5.0e-8
   clump_r2: 0.001
   clump_kb: 10000
   methods: [ivw, mr_egger, weighted_median]
+
+# ---- Aim 1 preliminary: public PBMC single-cell re-analysis ----
+scrnaseq:
+  # Public dataset IDs, each stored as data/external/scrnaseq/<id>.h5ad (to be chosen).
+  datasets: []
+  min_genes: 200
+  max_pct_mito: 15
+  n_top_genes: 3000
+  leiden_resolution: 1.0
+  gene_sets: [fatty_acid_metabolism, eicosanoid_synthesis]
+
+# ---- Aim 3 preliminary: fatty-acid classifier re-analysis ----
+classifier:
+  input: metabolomics/fatty_acids.csv   # relative to paths.secure
+  label: disease_status
+  models: [logistic_elastic_net, random_forest, xgboost]
 
 ml:
   cv_outer_folds: 5

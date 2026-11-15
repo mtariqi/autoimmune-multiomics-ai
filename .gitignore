@@ -33,3 +33,6 @@ __pycache__/
 .snakemake/
 .env
 .DS_Store
+
+# ---- Pipeline logs ----
+logs/

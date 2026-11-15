@@ -17,15 +17,17 @@ integrated multi-omics predict who among at-risk individuals will progress?
 ## Repository layout
 
 ```
-config/             analysis parameters (config.yaml)
+config/             all parameters and paths (config.yaml)
 data/               NOT version-controlled except README and metadata templates
 docs/               methods notes and manuscript drafts
-notebooks/          exploratory notebooks (numbered)
-results/            figures, tables, models (generated)
-src/autoimmune_mo/  reusable Python package
-workflow/           Snakemake pipeline
+notebooks/          exploration only (see notebooks/README.md)
+results/            generated figures, tables, models
+src/autoimmune_mo/  tested Python package: all analysis logic
+workflow/           Snakemake pipeline: rules/, scripts/, envs/
 tests/              unit tests (pytest)
 ```
+
+See [ARCHITECTURE.md](ARCHITECTURE.md) for the data flow, layer rules and naming conventions.
 
 ## Quick start
 

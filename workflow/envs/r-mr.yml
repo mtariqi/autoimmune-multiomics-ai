@@ -1,0 +1,10 @@
+# Separate environment for R-based Mendelian randomization rules.
+# TwoSampleMR is installed from GitHub on first use (see docs/methods/mendelian_randomization.md).
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - r-base=4.3
+  - r-remotes
+  - r-data.table
+  - r-dplyr

@@ -1,12 +1,19 @@
-# Snakemake pipeline entry point. Rules are added per analysis in workflow/rules/.
+# Pipeline entry point. Run one analysis with: snakemake --cores 4 --use-conda <analysis>_all
 configfile: "config/config.yaml"
+
+
+include: "rules/mr.smk"
+include: "rules/scrnaseq.smk"
+include: "rules/classifier.smk"
+
 
 rule all:
     input:
-        "results/tables/environment_check.txt"
+        "results/tables/environment_check.txt",
+
 
 rule environment_check:
     output:
-        "results/tables/environment_check.txt"
+        "results/tables/environment_check.txt",
     shell:
         "python -c 'import autoimmune_mo, sys; print(autoimmune_mo.__version__, sys.version)' > {output}"
