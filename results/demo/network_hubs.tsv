@@ -1,0 +1,11 @@
+feature	degree	strength	eigenvector	module
+DPA	3	1.47764	0.50397	0
+EPA	3	1.47763	0.50391	0
+ALA	3	1.46681	0.50122	0
+DHA	3	1.42681	0.49078	0
+LA	0	0.0		-1
+DGLA	0	0.0		-1
+AA	0	0.0		-1
+PA	0	0.0		-1
+SA	0	0.0		-1
+OA	0	0.0		-1

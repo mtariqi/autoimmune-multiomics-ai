@@ -11,6 +11,8 @@ dependencies:
   - statsmodels
   - scikit-learn
   - lifelines
+  - networkx
+  - lightgbm
   - xgboost
   - shap
   - scanpy
@@ -22,7 +24,12 @@ dependencies:
   - ruff
   - black
   - jupyterlab
+  - mkdocs>=1.6,<2
+  - mkdocs-material>=9.5,<10
   # R side, for Mendelian randomization (TwoSampleMR is installed from GitHub; see docs/methods)
   - r-base=4.3
   - r-devtools
   - r-data.table
+  - pip:
+      - celltypist
+      - mofapy2

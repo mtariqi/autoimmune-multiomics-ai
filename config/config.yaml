@@ -13,7 +13,38 @@ paths:
 demo:
   n_participants: 200
   visits: 3
-  n_features: 10
+  n_qc_samples: 8
+  models: [logistic_elastic_net, random_forest, xgboost, lightgbm, mlp]
+
+# ---- Metabolomics QC (Step 6) ----
+metabolomics:
+  max_missing: 0.2   # drop features missing in >20% of samples
+  max_qc_cv: 0.3     # drop features with CV >30% in pooled QC samples
+  scaling: null      # null, auto or pareto (for multivariate methods)
+
+# ---- Network biology (Step 13) ----
+network:
+  method: spearman
+  min_abs_r: 0.3
+  max_q: 0.05
+
+# ---- Bulk RNA-seq, Phase 2 (Step 7) ----
+rnaseq:
+  samples: []              # sample IDs; FASTQs at data/raw/rnaseq/{sample}_R1.fastq.gz and _R2
+  sample_sheet: data/metadata/rnaseq_samples.tsv   # sample_id + design variables
+  star_index: resources/star_index
+  annotation_gtf: resources/genes.gtf
+  strandedness: 2          # featureCounts -s: 0 unstranded, 1 forward, 2 reverse
+  design: "~ batch + group"
+  contrast: [group, progressor, non_progressor]
+
+# ---- Shotgun metagenomics, Phase 2 (Step 9) ----
+microbiome:
+  samples: []              # FASTQs at data/raw/microbiome/{sample}_R1.fastq.gz and _R2
+  metaphlan_db: resources/metaphlan_db
+  humann_nucleotide_db: resources/humann/chocophlan
+  humann_protein_db: resources/humann/uniref
+  min_prevalence: 0.1
 
 # ---- Aim 2 preliminary: Mendelian randomization ----
 mr:
@@ -30,20 +61,27 @@ mr:
 scrnaseq:
   # Public dataset IDs, each stored as data/external/scrnaseq/<id>.h5ad (to be chosen).
   datasets: []
+  donor_key: donor_id
+  batch_key: null
+  celltypist_model: Immune_All_Low.pkl
+  min_cells_pseudobulk: 10
   min_genes: 200
   max_pct_mito: 15
   n_top_genes: 3000
   leiden_resolution: 1.0
-  gene_sets: [fatty_acid_metabolism, eicosanoid_synthesis]
 
 # ---- Aim 3 preliminary: fatty-acid classifier re-analysis ----
 classifier:
   input: metabolomics/fatty_acids.csv   # relative to paths.secure
   label: disease_status
-  models: [logistic_elastic_net, random_forest, xgboost]
+  label_values: [control, autoimmune]   # [negative class, positive class]
+  id_column: participant_id
+  log2: true
+  models: [logistic_elastic_net, random_forest, xgboost, lightgbm, mlp]
 
 ml:
   cv_outer_folds: 5
   cv_inner_folds: 5
   split_by: participant_id   # repeated visits never cross folds
   metrics: [roc_auc, average_precision, brier]
+  importance_method: auto   # shap if installed, else permutation

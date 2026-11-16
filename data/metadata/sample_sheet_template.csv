@@ -1,4 +1,5 @@
-participant_id,visit,months_from_baseline,group,acpa_status,sex,age,bmi,progressed,months_to_onset
-SYN001,0,0,at_risk,positive,F,52,27.1,0,
-SYN001,1,6,at_risk,positive,F,52,27.4,0,
-SYN002,0,0,at_risk,negative,M,47,24.9,0,
+sample_id,participant_id,visit,months_from_baseline,group,acpa_status,sex,age,bmi,progressed,months_to_onset,batch
+SYN001_V0,SYN001,0,0,at_risk,positive,F,52,27.1,0,,plate1
+SYN001_V1,SYN001,1,6,at_risk,positive,F,52.5,27.4,0,,plate2
+SYN002_V0,SYN002,0,0,at_risk,negative,M,47,24.9,0,,plate1
+QC01,QC01,0,0,qc_pool,unknown,unknown,0,,,,plate1

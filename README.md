@@ -6,6 +6,7 @@
   <a href="https://github.com/mtariqi/autoimmune-multiomics-ai/actions/workflows/ci.yml"><img src="https://github.com/mtariqi/autoimmune-multiomics-ai/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <a href="https://www.repostatus.org/#wip"><img src="https://www.repostatus.org/badges/latest/wip.svg" alt="Project status: WIP"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
+  <a href="https://mtariqi.github.io/autoimmune-multiomics-ai/"><img src="https://img.shields.io/badge/docs-website-4E6E7A.svg" alt="Documentation"></a>
   <a href="CITATION.cff"><img src="https://img.shields.io/badge/cite-CITATION.cff-informational.svg" alt="Cite this repository"></a>
   <a href="https://github.com/mtariqi/autoimmune-multiomics-ai/commits/main"><img src="https://img.shields.io/github/last-commit/mtariqi/autoimmune-multiomics-ai.svg" alt="Last commit"></a>
   <br>
@@ -52,29 +53,45 @@ integrated multi-omics predict who among at-risk individuals will progress?
 | R 4.3 | Mendelian randomization (TwoSampleMR) |
 | Snakemake | Reproducible pipeline, per-rule conda environments |
 | Scanpy | Single-cell RNA-seq analysis |
-| scikit-learn, XGBoost | Leakage-safe cross-validation, prediction models |
+| scikit-learn, XGBoost, LightGBM | Leakage-safe nested cross-validation, prediction models |
 | SHAP | Explaining model predictions |
 | lifelines | Survival models for time to onset |
+| networkx | Correlation networks, hubs and modules |
+| CellTypist, MOFA+ | Cell-type annotation, multi-omics factor analysis |
+| STAR, featureCounts, DESeq2 | Bulk RNA-seq (Phase 2) |
+| MetaPhlAn, HUMAnN | Shotgun metagenomics (Phase 2) |
 | conda, GitHub Actions | Pinned environments, automated tests and pipeline runs |
+| MkDocs Material | Documentation website |
 
 ## Status
 
-| Analysis | Aim | Data | Status |
-| --- | --- | --- | --- |
-| Two-sample Mendelian randomization: fatty acids → RA (and reverse) | Aim 2 | Public GWAS summary statistics | Planned |
-| PBMC single-cell re-analysis: fatty-acid / eicosanoid programs in RA | Aim 1 | Public scRNA-seq (GEO, CELLxGENE) | Planned |
-| Leakage-safe re-analysis of serum fatty-acid classifier | Aim 3 | Existing metabolomics data (not public) | Planned |
+| Component | State |
+| --- | --- |
+| Data standards, metabolomics, microbiome, single-cell, integration, ML, explainable AI and network modules | Implemented and tested; run end to end on synthetic data (`snakemake demo_all`) |
+| Bulk RNA-seq and shotgun metagenomics workflows | Written; waiting for Phase 2 sequencing data |
+| Mendelian randomization | Planned next |
+| Preliminary results on real data | Not started |
+
+See [ROADMAP.md](ROADMAP.md) for the 12 to 18 month plan and the [documentation website](https://mtariqi.github.io/autoimmune-multiomics-ai/) for methods.
 
 ## Repository layout
 
 ```
 config/             all parameters and paths (config.yaml)
 data/               NOT version-controlled except README and metadata templates
-docs/               methods notes and manuscript drafts
+docs/               documentation website source, methods, manuscript (not published)
 notebooks/          exploration only (see notebooks/README.md)
 results/            generated figures, tables, models
-src/autoimmune_mo/  tested Python package: all analysis logic
-workflow/           Snakemake pipeline: rules/, scripts/, envs/
+src/autoimmune_mo/  tested Python package
+  standards.py        table schemas and validation
+  metabolomics/       QC, imputation, fatty-acid indices, differential analysis
+  rnaseq/             count filtering, log-CPM
+  scrnaseq/           Scanpy preprocessing, pseudobulk, program scores
+  microbiome/         CLR, diversity, Aitchison distance
+  integration/        block scaling, per-layer PCs, MOFA+
+  ml/                 grouped splits, model registry, nested CV, SHAP and stability
+  network/            correlation networks, hubs, modules
+workflow/           Snakemake pipeline: rules/, scripts/, envs/, profiles/
 tests/              unit tests (pytest)
 ```
 
@@ -88,6 +105,7 @@ conda activate autoimmune-mo
 pip install -e .
 pytest
 snakemake all            # runs the synthetic demo end to end
+mkdocs serve             # documentation website at http://127.0.0.1:8000
 ```
 
 ## Reproducing results
@@ -97,10 +115,12 @@ environments, rerun triggers) come from `workflow/profiles/default/config.yaml`.
 
 | Target | What it runs | Data needed |
 | --- | --- | --- |
-| `snakemake all` | Environment check + synthetic demo | None |
+| `snakemake all` | Environment check + synthetic demo of every module | None |
 | `snakemake mr_all` | Mendelian randomization | Public GWAS in `data/external/gwas/` |
 | `snakemake scrnaseq_all` | Single-cell re-analysis | Public `.h5ad` files in `data/external/scrnaseq/` |
 | `snakemake classifier_all` | Fatty-acid classifier | `AMO_SECURE_DATA` set (secure machine only) |
+| `snakemake rnaseq_all` | FastQC, Trim Galore, STAR, featureCounts, DESeq2, MultiQC | FASTQ in `data/raw/rnaseq/` (Phase 2) |
+| `snakemake microbiome_all` | MetaPhlAn, HUMAnN, diversity | FASTQ in `data/raw/microbiome/` (Phase 2) |
 
 Useful commands:
 

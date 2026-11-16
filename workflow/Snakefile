@@ -1,7 +1,7 @@
 # Pipeline entry point.
 #   snakemake -n <target>        dry run
 #   snakemake <target>           run (settings come from workflow/profiles/default)
-# Targets: demo_all, mr_all, scrnaseq_all, classifier_all
+# Targets: demo_all, mr_all, scrnaseq_all, classifier_all, rnaseq_all, microbiome_all
 from snakemake.utils import min_version
 
 min_version("8.20")
@@ -14,6 +14,8 @@ include: "rules/demo.smk"
 include: "rules/mr.smk"
 include: "rules/scrnaseq.smk"
 include: "rules/classifier.smk"
+include: "rules/rnaseq.smk"
+include: "rules/microbiome.smk"
 
 
 rule all:

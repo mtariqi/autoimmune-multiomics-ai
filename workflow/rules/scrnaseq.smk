@@ -1,5 +1,8 @@
-# Aim 1 preliminary: public PBMC scRNA-seq, fatty-acid / eicosanoid programs by cell type.
+# Single-cell RNA-seq on public PBMC data: QC + clustering -> CellTypist annotation ->
+# pseudobulk per donor and cell type -> fatty-acid / eicosanoid program scores.
+# Phase 2 cohort data enter the same rules after Cell Ranger at the sequencing core.
 SC = config["scrnaseq"]
+WSC = "data/processed/scrnaseq"
 
 
 rule scrnaseq_all:
@@ -7,22 +10,28 @@ rule scrnaseq_all:
         expand("results/scrnaseq/program_scores_{dataset}.tsv", dataset=SC["datasets"]),
 
 
-rule scrnaseq_qc:
+rule scrnaseq_qc_cluster:
     input:
         "data/external/scrnaseq/{dataset}.h5ad",
     output:
-        "data/processed/scrnaseq/{dataset}_qc.h5ad",
+        f"{WSC}/{{dataset}}_clustered.h5ad",
+    params:
+        sc=SC,
+        seed=config["random_seed"],
+    threads: 4
     log:
-        "logs/scrnaseq/qc_{dataset}.log",
+        "logs/scrnaseq/qc_cluster_{dataset}.log",
     script:
         "../scripts/scrnaseq_qc.py"
 
 
-rule scrnaseq_cluster_annotate:
+rule scrnaseq_annotate:
     input:
-        "data/processed/scrnaseq/{dataset}_qc.h5ad",
+        rules.scrnaseq_qc_cluster.output,
     output:
-        "data/processed/scrnaseq/{dataset}_annotated.h5ad",
+        f"{WSC}/{{dataset}}_annotated.h5ad",
+    params:
+        model=SC["celltypist_model"],
     log:
         "logs/scrnaseq/annotate_{dataset}.log",
     script:
@@ -31,9 +40,13 @@ rule scrnaseq_cluster_annotate:
 
 rule scrnaseq_program_scores:
     input:
-        "data/processed/scrnaseq/{dataset}_annotated.h5ad",
+        rules.scrnaseq_annotate.output,
     output:
-        "results/scrnaseq/program_scores_{dataset}.tsv",
+        pseudobulk=f"{WSC}/{{dataset}}_pseudobulk.tsv",
+        scores="results/scrnaseq/program_scores_{dataset}.tsv",
+    params:
+        donor=SC["donor_key"],
+        min_cells=SC["min_cells_pseudobulk"],
     log:
         "logs/scrnaseq/scores_{dataset}.log",
     script:

@@ -38,15 +38,21 @@ flowchart LR
 
 ## Analyses
 
-Each analysis has the same four pieces, with matching names:
+Each analysis has the same pieces, with matching names:
 
 | Analysis | Rule file | Package module | Results folder | Data |
 | --- | --- | --- | --- | --- |
-| Mendelian randomization | `workflow/rules/mr.smk` | `autoimmune_mo.mr` | `results/mr/` | Public GWAS summary statistics |
-| Single-cell re-analysis | `workflow/rules/scrnaseq.smk` | `autoimmune_mo.scrnaseq` | `results/scrnaseq/` | Public PBMC scRNA-seq |
-| Synthetic demo | `workflow/rules/demo.smk` | `autoimmune_mo.ml` | `results/demo/` | Generated, no real data |
-| Fatty-acid classifier | `workflow/rules/classifier.smk` | `autoimmune_mo.ml`, `autoimmune_mo.metabolomics` | `results/classifier/` | Secure (participant-level) |
-| Multi-omics integration | added later | `autoimmune_mo.integration` | `results/integration/` | Secure |
+| Synthetic demo | `demo.smk` | all modules | `results/demo/` | Generated, no real data |
+| Mendelian randomization | `mr.smk` | `autoimmune_mo.mr` | `results/mr/` | Public GWAS summary statistics |
+| Single-cell RNA-seq | `scrnaseq.smk` | `autoimmune_mo.scrnaseq` | `results/scrnaseq/` | Public PBMC scRNA-seq, then Phase 2 |
+| Fatty-acid classifier | `classifier.smk` | `autoimmune_mo.ml`, `autoimmune_mo.metabolomics` | `results/classifier/` | Secure (participant-level) |
+| Bulk RNA-seq | `rnaseq.smk` | `autoimmune_mo.rnaseq` | `results/rnaseq/` | Phase 2 FASTQ |
+| Microbiome | `microbiome.smk` | `autoimmune_mo.microbiome` | `results/microbiome/` | Phase 2 FASTQ |
+| Integration | added with Phase 2 data | `autoimmune_mo.integration` | `results/integration/` | Secure |
+| Networks | inside each analysis | `autoimmune_mo.network` | per analysis | Any feature matrix |
+
+Every input table is validated against `autoimmune_mo.standards` before analysis
+(see the data standards page of the documentation).
 
 ## Conventions
 

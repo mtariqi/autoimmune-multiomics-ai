@@ -1,6 +1,14 @@
-"""Snakemake script: scrnaseq_annotate.
+"""Snakemake script: automated cell-type annotation with CellTypist (majority vote per cluster)."""
 
-Thin glue only: read snakemake.input / snakemake.params, call autoimmune_mo, write snakemake.output.
-"""
+import celltypist
+import scanpy as sc
 
-raise NotImplementedError("scrnaseq_annotate is not implemented yet.")
+s = snakemake  # noqa: F821
+adata = sc.read_h5ad(s.input[0])
+celltypist.models.download_models(model=[s.params.model], force_update=False)
+pred = celltypist.annotate(adata, model=s.params.model, majority_voting=True,
+                           over_clustering="leiden")
+adata.obs["cell_type"] = pred.predicted_labels["majority_voting"].astype(str).values
+adata.write_h5ad(s.output[0])
+with open(s.log[0], "w") as fh:
+    fh.write(adata.obs["cell_type"].value_counts().to_string() + "\n")

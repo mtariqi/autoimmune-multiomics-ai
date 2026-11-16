@@ -36,3 +36,6 @@ __pycache__/
 
 # ---- Pipeline logs ----
 logs/
+
+# ---- Docs site build ----
+site/
