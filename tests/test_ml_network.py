@@ -1,8 +1,14 @@
 import pandas as pd
 import pytest
 
-from autoimmune_mo.ml import (available_models, calibration_table, feature_importance,
-                              importance_stability, nested_cv, summarize_metrics)
+from autoimmune_mo.ml import (
+    available_models,
+    calibration_table,
+    feature_importance,
+    importance_stability,
+    nested_cv,
+    summarize_metrics,
+)
 from autoimmune_mo.network import correlation_network, hub_table
 
 
@@ -14,7 +20,7 @@ def test_nested_cv_learns_signal_without_leakage(cohort):
     X, y, groups = cohort
     metrics, preds, fitted = nested_cv(X, y, groups, ["logistic_elastic_net"], 3, 3)
     assert metrics["roc_auc"].mean() > 0.75
-    for (_, k), (_, te) in fitted.items():
+    for (_, te) in fitted.values():
         test_people = set(groups[te])
         train_people = set(groups) - test_people
         assert test_people.isdisjoint(train_people)

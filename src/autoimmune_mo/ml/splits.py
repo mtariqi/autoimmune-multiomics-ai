@@ -21,5 +21,4 @@ def participant_folds(
     cv = StratifiedGroupKFold(n_splits=n_splits, shuffle=True, random_state=seed)
     y = df[label].to_numpy()
     groups = df[group].to_numpy()
-    for train_idx, test_idx in cv.split(np.zeros(len(df)), y, groups):
-        yield train_idx, test_idx
+    yield from cv.split(np.zeros(len(df)), y, groups)

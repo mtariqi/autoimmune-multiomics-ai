@@ -2,8 +2,14 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from autoimmune_mo.metabolomics import (differential_abundance, fatty_acid_indices,
-                                        filter_missing, filter_qc_cv, impute_half_min, preprocess)
+from autoimmune_mo.metabolomics import (
+    differential_abundance,
+    fatty_acid_indices,
+    filter_missing,
+    filter_qc_cv,
+    impute_half_min,
+    preprocess,
+)
 
 
 def test_filter_missing_drops_sparse_feature():

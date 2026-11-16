@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-from autoimmune_mo.standards import (SAMPLE_SHEET, check_matrix_matches_samples, validate_table)
+from autoimmune_mo.standards import SAMPLE_SHEET, check_matrix_matches_samples, validate_table
 from autoimmune_mo.stats import bh_fdr
 
 

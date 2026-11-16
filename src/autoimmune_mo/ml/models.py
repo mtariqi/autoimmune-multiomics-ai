@@ -15,7 +15,6 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
-
 _SKLEARN = tuple(int(x) for x in sklearn.__version__.split(".")[:2])
 
 
@@ -28,7 +27,7 @@ def _pipe(model, scale=True):
 
 
 def _logistic(seed):
-    kw = dict(solver="saga", l1_ratio=0.5, C=1.0, max_iter=5000, random_state=seed)
+    kw = {"solver": "saga", "l1_ratio": 0.5, "C": 1.0, "max_iter": 5000, "random_state": seed}
     if _SKLEARN < (1, 8):  # older versions need the penalty named explicitly
         kw["penalty"] = "elasticnet"
     m = LogisticRegression(**kw)

@@ -10,6 +10,19 @@ import pandas as pd
 from sklearn.inspection import permutation_importance
 
 
+TREE_MODELS = {"RandomForestClassifier", "XGBClassifier", "LGBMClassifier"}
+
+
+def _make_explainer(shap, model, Xt, seed):
+    """Exact explainers for tree and linear models; model-agnostic otherwise (e.g. MLP)."""
+    name = type(model).__name__
+    if name in TREE_MODELS:
+        return shap.TreeExplainer(model)
+    if name == "LogisticRegression":
+        return shap.LinearExplainer(model, Xt)
+    return shap.Explainer(lambda a: model.predict_proba(a)[:, 1], Xt, seed=seed)
+
+
 def feature_importance(pipeline, X: pd.DataFrame, y=None, method: str = "auto",
                        seed: int = 2026) -> pd.Series:
     """Global importance per feature for a fitted sklearn Pipeline.
@@ -26,10 +39,7 @@ def feature_importance(pipeline, X: pd.DataFrame, y=None, method: str = "auto",
         pre = pipeline[:-1]
         model = pipeline[-1]
         Xt = pd.DataFrame(pre.transform(X), index=X.index, columns=X.columns)
-        try:  # tree and linear models get exact, fast explainers
-            explainer = shap.Explainer(model, Xt, seed=seed)
-        except Exception:  # anything else (e.g. MLP): model-agnostic explainer
-            explainer = shap.Explainer(lambda a: model.predict_proba(a)[:, 1], Xt, seed=seed)
+        explainer = _make_explainer(shap, model, Xt, seed)
         sv = explainer(Xt)
         vals = sv.values[..., 1] if sv.values.ndim == 3 else sv.values
         imp = np.abs(vals).mean(axis=0)
