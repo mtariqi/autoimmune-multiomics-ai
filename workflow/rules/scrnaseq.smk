@@ -1,3 +1,13 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : workflow/rules/scrnaseq.smk
+# Purpose     : Single-cell RNA-seq on public PBMC data: QC + clustering ->
+#               CellTypist annotation ->
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 # Single-cell RNA-seq on public PBMC data: QC + clustering -> CellTypist annotation ->
 # pseudobulk per donor and cell type -> fatty-acid / eicosanoid program scores.
 # Phase 2 cohort data enter the same rules after Cell Ranger at the sequencing core.

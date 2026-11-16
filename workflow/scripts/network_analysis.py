@@ -1,3 +1,12 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : workflow/scripts/network_analysis.py
+# Purpose     : Correlation network, hub features and modules.
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 """Snakemake script: correlation network, hub features and modules."""
 
 import pandas as pd

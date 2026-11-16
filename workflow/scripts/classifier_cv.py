@@ -1,3 +1,12 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : workflow/scripts/classifier_cv.py
+# Purpose     : Nested CV on a secure fatty-acid table (one row per sample).
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 """Snakemake script: nested CV on a secure fatty-acid table (one row per sample).
 
 The table needs the label column, an ID column (participant, used for grouping) and numeric

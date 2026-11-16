@@ -1,3 +1,12 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : tests/conftest.py
+# Purpose     : Shared pytest fixtures (synthetic data).
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 import numpy as np
 import pandas as pd
 import pytest

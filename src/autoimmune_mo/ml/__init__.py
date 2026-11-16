@@ -1,3 +1,13 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : src/autoimmune_mo/ml/__init__.py
+# Purpose     : Machine learning: leakage-safe splits, model registry, nested CV
+#               and explanations.
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 """Machine learning: leakage-safe splits, model registry, nested CV and explanations."""
 
 from .evaluate import calibration_table, nested_cv, summarize_metrics

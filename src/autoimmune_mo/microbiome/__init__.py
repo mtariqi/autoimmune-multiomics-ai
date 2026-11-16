@@ -1,3 +1,13 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : src/autoimmune_mo/microbiome/__init__.py
+# Purpose     : Microbiome: compositional transforms and diversity for taxa
+#               tables (samples x taxa).
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 """Microbiome: compositional transforms and diversity for taxa tables (samples x taxa)."""
 
 from __future__ import annotations

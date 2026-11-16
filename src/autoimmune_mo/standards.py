@@ -1,3 +1,12 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : src/autoimmune_mo/standards.py
+# Purpose     : Data standards: table schemas and a validator.
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 """Data standards: table schemas and a validator.
 
 Conventions used throughout the project:

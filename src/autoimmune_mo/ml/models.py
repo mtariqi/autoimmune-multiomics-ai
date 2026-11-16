@@ -1,3 +1,13 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : src/autoimmune_mo/ml/models.py
+# Purpose     : Model registry. Each entry returns (estimator pipeline,
+#               hyperparameter grid).
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 """Model registry. Each entry returns (estimator pipeline, hyperparameter grid).
 
 Gradient-boosting libraries are optional: a model is available only if its library is installed.

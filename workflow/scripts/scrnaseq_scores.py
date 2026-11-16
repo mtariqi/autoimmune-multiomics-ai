@@ -1,3 +1,13 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : workflow/scripts/scrnaseq_scores.py
+# Purpose     : Pseudobulk counts per donor x cell type, then program scores on
+#               log-CPM.
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 """Snakemake script: pseudobulk counts per donor x cell type, then program scores on log-CPM."""
 
 import pandas as pd

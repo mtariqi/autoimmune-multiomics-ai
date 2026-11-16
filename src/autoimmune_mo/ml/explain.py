@@ -1,3 +1,13 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : src/autoimmune_mo/ml/explain.py
+# Purpose     : Model explanations: SHAP when installed, permutation importance
+#               otherwise, plus a stability check across cross-validation folds.
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 """Model explanations: SHAP when installed, permutation importance otherwise,
 plus a stability check across cross-validation folds."""
 

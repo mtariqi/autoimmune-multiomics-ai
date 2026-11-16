@@ -1,3 +1,13 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : workflow/scripts/microbiome_diversity.py
+# Purpose     : Species-level MetaPhlAn table -> alpha diversity, CLR, Aitchison
+#               distance.
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 """Snakemake script: species-level MetaPhlAn table -> alpha diversity, CLR, Aitchison distance."""
 
 import pandas as pd

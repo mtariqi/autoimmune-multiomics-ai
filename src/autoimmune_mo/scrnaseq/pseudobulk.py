@@ -1,3 +1,13 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : src/autoimmune_mo/scrnaseq/pseudobulk.py
+# Purpose     : Pseudobulk aggregation and gene-program scoring (pure pandas; no
+#               Scanpy needed).
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 """Pseudobulk aggregation and gene-program scoring (pure pandas; no Scanpy needed).
 
 Case-control comparisons across donors use pseudobulk counts per donor and cell type, so that

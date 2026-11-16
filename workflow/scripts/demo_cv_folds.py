@@ -1,3 +1,13 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : workflow/scripts/demo_cv_folds.py
+# Purpose     : Leakage-safe CV folds on the synthetic cohort, with a leak
+#               check.
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 """Snakemake script: leakage-safe CV folds on the synthetic cohort, with a leak check."""
 
 import pandas as pd

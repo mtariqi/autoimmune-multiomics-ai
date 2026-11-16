@@ -1,3 +1,13 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : src/autoimmune_mo/metabolomics/ratios.py
+# Purpose     : Fatty-acid indices from absolute concentrations (same units
+#               across columns).
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 """Fatty-acid indices from absolute concentrations (same units across columns)."""
 
 from __future__ import annotations

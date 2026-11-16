@@ -1,3 +1,13 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : workflow/rules/demo.smk
+# Purpose     : End-to-end demo on synthetic data: data standards ->
+#               metabolomics -> ML + explanations -> network.
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 # End-to-end demo on synthetic data: data standards -> metabolomics -> ML + explanations -> network.
 # Runs anywhere without real data. CI runs it on every push and checks the outputs are identical
 # across two runs.

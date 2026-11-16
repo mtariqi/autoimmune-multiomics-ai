@@ -1,3 +1,13 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : workflow/rules/microbiome.smk
+# Purpose     : Shotgun metagenomics, Phase 2: MetaPhlAn (taxonomy) + HUMAnN
+#               (pathways) -> diversity and CLR.
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 # Shotgun metagenomics, Phase 2: MetaPhlAn (taxonomy) + HUMAnN (pathways) -> diversity and CLR.
 # Inputs: data/raw/microbiome/{sample}_R1.fastq.gz and _R2.fastq.gz. Host reads should already be
 # removed by the sequencing core (human DNA must not leave the secure environment).

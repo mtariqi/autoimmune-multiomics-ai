@@ -4,6 +4,7 @@ title: "autoimmune-multiomics-ai"
 authors:
   - family-names: Islam
     given-names: Md Tariqul
+    affiliation: "Northeastern University, Bioinformatics Department"
 version: 0.1.0
 date-released: 2026-11-15
 license: MIT

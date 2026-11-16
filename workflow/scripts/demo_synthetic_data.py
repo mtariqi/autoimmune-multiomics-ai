@@ -1,3 +1,12 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : workflow/scripts/demo_synthetic_data.py
+# Purpose     : Synthetic at-risk cohort with serum fatty acids (no real data).
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 """Snakemake script: synthetic at-risk cohort with serum fatty acids (no real data).
 
 Progressors get lower EPA/DHA and higher arachidonic acid. Omega-3 species share a latent factor,

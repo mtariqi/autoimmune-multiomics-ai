@@ -1,3 +1,13 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : workflow/Snakefile
+# Purpose     : Pipeline entry point: loads the config and includes every
+#               analysis rule file.
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 # Pipeline entry point.
 #   snakemake -n <target>        dry run
 #   snakemake <target>           run (settings come from workflow/profiles/default)

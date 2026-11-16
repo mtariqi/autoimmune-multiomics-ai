@@ -1,3 +1,13 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : workflow/scripts/scrnaseq_annotate.py
+# Purpose     : Automated cell-type annotation with CellTypist (majority vote
+#               per cluster).
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 """Snakemake script: automated cell-type annotation with CellTypist (majority vote per cluster)."""
 
 import celltypist

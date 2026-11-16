@@ -1,3 +1,13 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : src/autoimmune_mo/metabolomics/preprocess.py
+# Purpose     : Standard targeted-metabolomics preprocessing on a samples x
+#               features matrix.
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 """Standard targeted-metabolomics preprocessing on a samples x features matrix."""
 
 from __future__ import annotations

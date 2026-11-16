@@ -1,3 +1,13 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : src/autoimmune_mo/network/__init__.py
+# Purpose     : Network biology: correlation networks, hub features and modules
+#               (networkx).
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 """Network biology: correlation networks, hub features and modules (networkx).
 
 Use for metabolite, protein or gene co-variation networks. Large gene co-expression analyses

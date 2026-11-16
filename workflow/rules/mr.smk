@@ -1,3 +1,13 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : workflow/rules/mr.smk
+# Purpose     : Aim 2 preliminary: two-sample Mendelian randomization, fatty
+#               acids -> RA (and reverse).
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 # Aim 2 preliminary: two-sample Mendelian randomization, fatty acids -> RA (and reverse).
 MR = config["mr"]
 GWAS = "data/external/gwas"

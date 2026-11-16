@@ -1,3 +1,12 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : src/autoimmune_mo/integration/__init__.py
+# Purpose     : Multi-omics integration.
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 """Multi-omics integration.
 
 * ``block_concat``: early integration. Scales each layer so no layer dominates by feature count.

@@ -1,3 +1,13 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : workflow/scripts/validate_inputs.py
+# Purpose     : Validate inputs against the project data standards; stop on any
+#               problem.
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 """Snakemake script: validate inputs against the project data standards; stop on any problem."""
 
 import pandas as pd

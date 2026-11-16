@@ -1,3 +1,13 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : workflow/scripts/train_models.py
+# Purpose     : Nested participant-grouped CV for each available model, plus
+#               feature importance and its stability across folds.
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 """Snakemake script: nested participant-grouped CV for each available model, plus
 feature importance and its stability across folds."""
 

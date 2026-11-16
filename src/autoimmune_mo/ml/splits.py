@@ -1,3 +1,13 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : src/autoimmune_mo/ml/splits.py
+# Purpose     : Leakage-safe cross-validation: all visits of a participant stay
+#               in one fold.
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 """Leakage-safe cross-validation: all visits of a participant stay in one fold."""
 
 from __future__ import annotations

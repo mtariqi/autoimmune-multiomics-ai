@@ -1,3 +1,13 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : workflow/rules/classifier.smk
+# Purpose     : Aim 3 preliminary: leakage-safe re-analysis of the serum fatty-
+#               acid classifier.
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 # Aim 3 preliminary: leakage-safe re-analysis of the serum fatty-acid classifier.
 # Runs only where AMO_SECURE_DATA is set; the input path is never written into the repo.
 import os

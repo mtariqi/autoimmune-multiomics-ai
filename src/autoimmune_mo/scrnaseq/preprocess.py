@@ -1,3 +1,13 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : src/autoimmune_mo/scrnaseq/preprocess.py
+# Purpose     : Scanpy preprocessing. Scanpy is imported lazily so the rest of
+#               the package works without it.
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 """Scanpy preprocessing. Scanpy is imported lazily so the rest of the package works without it."""
 
 from __future__ import annotations

@@ -1,3 +1,12 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : src/autoimmune_mo/rnaseq/__init__.py
+# Purpose     : Bulk RNA-seq helpers for count matrices (samples x genes).
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 """Bulk RNA-seq helpers for count matrices (samples x genes).
 
 Read processing (FastQC, trimming, STAR, featureCounts) and DESeq2 run in

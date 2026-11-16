@@ -1,3 +1,13 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : src/autoimmune_mo/config.py
+# Purpose     : Load the project configuration with environment variables
+#               expanded and paths resolved.
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 """Load the project configuration with environment variables expanded and paths resolved."""
 
 from __future__ import annotations

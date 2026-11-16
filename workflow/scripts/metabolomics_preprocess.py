@@ -1,3 +1,13 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : workflow/scripts/metabolomics_preprocess.py
+# Purpose     : Metabolomics QC, fatty-acid indices and baseline differential
+#               analysis.
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 """Snakemake script: metabolomics QC, fatty-acid indices and baseline differential analysis."""
 
 import pandas as pd

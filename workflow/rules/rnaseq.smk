@@ -1,3 +1,13 @@
+# ==============================================================================
+# Project     : Autoimmune Multi-Omics AI (autoimmune-multiomics-ai)
+# File        : workflow/rules/rnaseq.smk
+# Purpose     : Bulk RNA-seq, Phase 2: FastQC -> Trim Galore -> STAR ->
+#               featureCounts -> DESeq2, plus MultiQC.
+# Author      : Md Tariqul Islam
+# Institution : Northeastern University | Bioinformatics Department
+# License     : MIT (see LICENSE)
+# ==============================================================================
+
 # Bulk RNA-seq, Phase 2: FastQC -> Trim Galore -> STAR -> featureCounts -> DESeq2, plus MultiQC.
 # Inputs: data/raw/rnaseq/{sample}_R1.fastq.gz and _R2.fastq.gz; samples listed in config.
 # Tool versions are pinned in workflow/envs/rnaseq.yml and deseq2.yml.
